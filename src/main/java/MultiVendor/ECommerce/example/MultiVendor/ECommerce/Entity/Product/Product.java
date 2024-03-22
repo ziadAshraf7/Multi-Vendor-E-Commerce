@@ -1,6 +1,7 @@
 package MultiVendor.ECommerce.example.MultiVendor.ECommerce.Entity.Product;
 
 
+import MultiVendor.ECommerce.example.MultiVendor.ECommerce.Entity.Category;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
@@ -45,6 +46,7 @@ public class Product {
     private String metaTitle;
 
 
+
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime createdAt;
 
@@ -52,6 +54,10 @@ public class Product {
     private LocalDateTime updatedAt;
 
 //    <----------------- relational mappings -------------------->
+
+    @ManyToOne(cascade = {CascadeType.DETACH , CascadeType.MERGE , CascadeType.PERSIST , CascadeType.REFRESH})
+    @JoinColumn(name = "category_id")
+    private Category category;
 
     @OneToMany(mappedBy = "product" , cascade = CascadeType.ALL)
     private final List<Product_Image> images = new ArrayList<>(50);
