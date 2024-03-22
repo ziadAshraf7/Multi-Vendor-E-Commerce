@@ -65,6 +65,10 @@ public class Product {
     @OneToMany(mappedBy = "product" , cascade = CascadeType.ALL)
     private final List<Product_Color> colors = new ArrayList<>(50);
 
+    @ManyToOne(cascade = {CascadeType.DETACH , CascadeType.MERGE , CascadeType.PERSIST , CascadeType.REFRESH})
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
+
 //    <----------------- relational mappings -------------------->
 
 }
