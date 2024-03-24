@@ -13,7 +13,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Entity
-@Table(name = "sub_category")
+@Table(name = "category")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
